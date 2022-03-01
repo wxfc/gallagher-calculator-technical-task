@@ -19,43 +19,88 @@ const Calculator = () => {
   //            net = gross - tax - HI
 
   const [gross, setGross] = useState(0);
-  const [grossSetOne, setGrossSetOne] = useState(0); // 15000
-  const [grossSetTwo, setGrossSetTwo] = useState(0);  // gross - 15000
-  const [grossSetThree, setGrossSetThree] = useState(0); // gross - grossSetTwo
   const [tax, setTax] = useState(0);
   const [hi, setHi] = useState(0);
-  const [net, setNet] = useState(0);
+  const [net, setNet] = useState();
 
-  const handleGross = (e) => {
-    setGross(e.target.value);
-    if (e.target.value < 15000) {
-      setGrossSetOne(e.target.value);
-    } else if (e.target.value > 15000 && e.target.value <= 50000) {
-      // setGrossSetOne(15000);
-      setGrossSetTwo(e.target.value - 15000);
-      console.log(e.target.value - 15000);
-    } else {
-      setGrossSetOne(15000);
-      setGrossSetTwo(50000 - 15000);
-      setGrossSetThree(e.target.value - setGrossSetTwo);
+  let grossCopy = Number(gross);
+  let grossSetOne
+  let grossSetTwo
+  let grossSetThree
+  let taxableAmount = Number()
+  let hiAmount = Number()
+
+  const handleTax = () => {
+    if (grossCopy > 15000 && grossCopy < 50001) {
+      taxableAmount = grossSetTwo * 0.2;
+    } else if (grossCopy > 50000) {
+      taxableAmount = 7000 + (grossSetThree * 0.4)
+    }
+    setTax(taxableAmount);
+  }
+
+  const handleHi = () => {
+    if (grossCopy > 15000 && grossCopy < 50001) {
+      hiAmount = grossSetTwo * 0.12;
+    } else if (grossCopy > 50000) {
+      hiAmount = 4200 + (grossSetThree * 0.02)
+    }
+    setHi(hiAmount);
+  }
+
+  const handleNet = () => {
+    if (grossCopy < 15001) {
+      setNet(grossCopy);
+    } else if (grossCopy > 15000 && grossCopy < 50001) {
+      setNet(grossCopy - (taxableAmount + hiAmount));
+    } else if (grossCopy > 50000) {
+      setNet(grossCopy - (taxableAmount + hiAmount));
     }
   }
 
 
+  const handleCalculate = (gr) => {
+    if (gr < 15001) {
+      grossSetOne = gr
+      console.log(grossSetOne)
+    } else if (gr > 15000 && gr <= 50000) {
+      grossSetOne = 15000
+      grossSetTwo = gr - 15000;
+      handleTax();
+      handleHi();
+    } else {
+      grossSetOne = 15000;
+      grossSetTwo = 35000;
+      grossSetThree = gr - 50000;
+      handleTax();
+      handleHi();
+    }
+    handleNet();
+  }
+
+  const handleClear = () => {
+    setGross(0);
+    setTax(0);
+    setHi(0);
+    setNet(0);
+    document.getElementById("input").value = "";
+  }
+
 
   return (
     <div>
-      <input />
-      <button onClick={event => handleGross(event)}>Calculate</button>
+        <input 
+          id="input"
+          type="number"
+          min="0"
+          onChange={(e)=> setGross(+e.target.value)}/>
+          <button onClick={()=> handleCalculate(grossCopy)}>Calculate</button>
+          <button onClick={handleClear}>Reset</button>
       <ul>
-        <li>Gross: {gross}</li>
-        <li>Tax: {tax < 0 ? 0 : tax}</li>
+        <li>Gross: {grossCopy}</li>
+        <li>Tax: {tax}</li>
         <li>HI: {hi}</li>
         <li>Net: {net}</li>
-
-        <li>Gross Set One: {grossSetOne}</li>
-        <li>Gross Set Two: {grossSetTwo < 0 ? 0 : grossSetTwo}</li>
-        <li>Gross Set Three: {grossSetThree < 0 ? 0 : grossSetThree}</li>
       </ul>
     </div>
   )
