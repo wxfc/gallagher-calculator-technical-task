@@ -1,22 +1,6 @@
 import React, { useState } from "react";
 
 const Calculator = () => {
-  // gross, tax, HI, net
-  // gross = user input value
-  // tax = gross * 0.2 && gross * 0.4
-  // HI = gross * 0.12 && gross * 0.02
-  // net = gross - tax - HI
-
-  // $15,000 >  : 
-  //            net = gross 
-  // $15,000 <  :
-  //            tax = gross * 0.2
-  //            HI = gross * 0.12
-  //            net = gross - tax - HI
-  // $50,000 <  :
-  //            tax = gross * 0.4
-  //            HI = gross * 0.02
-  //            net = gross - tax - HI
 
   const [gross, setGross] = useState(0);
   const [tax, setTax] = useState(0);
@@ -86,28 +70,37 @@ const Calculator = () => {
     document.getElementById("input").value = "";
   }
 
-
   return (
     <div>
-        <input 
-          id="input"
-          type="number"
-          min="0"
-          onChange={(e)=> setGross(+e.target.value)}/>
-          <button onClick={()=> handleCalculate(grossCopy)}>Calculate</button>
-          <button onClick={handleClear}>Reset</button>
-      <ul>
-        <li>Gross: {grossCopy}</li>
-        <li>Tax: {tax}</li>
-        <li>HI: {hi}</li>
-        <li>Net: {net}</li>
-      </ul>
+      <label className="">
+      <input 
+        id="input"
+        type="number"
+        min="0"
+        placeholder="Enter Gross Salary"
+        className="mb-6 p-2 border-black text-black rounded-md bg-sky-100 hover:bg-sky-300"
+        onChange={(e)=> setGross(+e.target.value)}/>
+      </label>
+      <div className="flex justify-center ">
+        <button 
+          className=" bg-sky-800 text-white hover:bg-sky-400 px-4 py-2 rounded-lg mr-2"
+          onClick={()=> handleCalculate(grossCopy)}>
+            Calculate
+        </button>
+        <button 
+          className="bg-sky-800 text-white hover:bg-sky-400 px-4 py-2 rounded-lg mr-2"
+          onClick={handleClear}>
+            Reset
+        </button>
+      </div>
+      <div className="grid bg-emerald-800 w-1/2 mt-6 rounded-lg text-white text-lg mx-auto">
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Gross: $ {gross}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Tax: $ {tax}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">HI: $ {hi}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Net: $ {net}</p>
+      </div>
     </div>
   )
-  
-
-
-
 }
 
 export default Calculator;
