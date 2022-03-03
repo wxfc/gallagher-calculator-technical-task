@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Gallagher Tax Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A application that calculates take home pay (net) based on gross income. Displaying amount of Tax and Health Insurance to pay.
 
-## Available Scripts
+### Installation
 
-In the project directory, you can run:
+- Click on the green "Code" button to clone this project
+- Click either Github CLI to clone it on the command line tool or "Open with Github Desktop"
+- Use the command `npm i` to install required dependecies (node_modules have been removed)
+- If cloned via CLI, change into the directory and use the command `npm start` which will load it up on http://localhost:3000 in the browser
+- If using Github Desktop to clone, click "Open in Visual Studio Code", `ctrl + ~` (key left of "1") use `npm start` to it on http://localhost:3000
 
-### `npm start`
+### Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Enter you salary into the input box
+- The gross amount will updated as you type
+- Click the `Calculate` button
+- The Tax, HI and Net amount gets calculated based on the rates at the bottom of the app
+- Click the `Reset` button to clear the numbers
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Assuming the brackets are:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. upto $15,000
+2. $15,001 - $50,000
+3. $50,001 and above

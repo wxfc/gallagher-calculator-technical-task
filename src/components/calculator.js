@@ -70,6 +70,10 @@ const Calculator = () => {
     document.getElementById("input").value = "";
   }
 
+  const addCommas = (num) => {
+    return num.toLocaleString("en-US");
+  }
+
   return (
     <div>
       <label className="">
@@ -94,10 +98,17 @@ const Calculator = () => {
         </button>
       </div>
       <div className="grid bg-emerald-800 w-1/2 mt-6 rounded-lg text-white text-lg mx-auto">
-        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Gross: $ {gross}</p>
-        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Tax: $ {tax}</p>
-        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">HI: $ {hi}</p>
-        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Net: $ {net}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Gross: $ {addCommas(gross)}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Tax: $ {addCommas(tax)}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">HI: $ {addCommas(hi)}</p>
+        <p className="p-2 sm:mx-14 hover:bg-emerald-500 rounded-md">Net: $ {addCommas(net)}</p>
+      </div>
+
+      <div className="bg-violet-700 mx-auto mt-6 w-1/2 rounded-lg p-2">
+        <h4 className="text-lg font-bold">Tax and Health Insurance Rates</h4>
+        <p className="text-left"><span className="font-semibold">First $15,000:</span> No Tax or HI rates to be paid.</p>
+        <p className="text-left"><span className="font-semibold">Amounts above $15,000 and less than $50,000:</span> 20% Tax and 12% HI.</p>
+        <p className="text-left"><span className="font-semibold">Any amount above $50,000:</span> 40% Tax and 2% HI.</p>
       </div>
     </div>
   )
